@@ -24,7 +24,7 @@
             <tr>
                 <td><input type = "button" value = "Объеденение" onclick = "merge();"/></td>
                 <td><input type = "button" value = "Пересечение" onclick = "intersect();"/></td>
-                <td><input type = "button" value = "Дополнение" onclick = "add();"/></td>
+                <td><input type = "button" value = "Дополнение" onclick = "addition();"/></td>
                 <td><input type = "button" value = "Симметричная разность" onclick = "symmetricallySubtract();"/></td>
             </tr>
             <tr>

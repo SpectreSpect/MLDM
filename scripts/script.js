@@ -84,9 +84,16 @@ function getIntersection(array2D1, array2D2)
     return resultArray2D;
 }
 
-function getAddition()
+function add(array2D1, array2D2)
 {
-
+    for(let i = 0; i < array2D1.length; i++)
+    {
+        if(find(array2D2, array2D1[i]))
+        {
+            array2D1.splice(i, 1);
+            i--;
+        }
+    }
 }
 
 function getSymmetricallySubtracted(array2D1, array2D2)
@@ -136,10 +143,16 @@ function intersect()
     document.getElementById("OutputText").innerText = result;
 }
 
-function add()
+function addition()
 {
     let array1 = document.getElementById("Array1");
-    let array2 = document.getElementById("Array2")
+    let array2 = document.getElementById("Array2");
+
+    let splitArray1 = array1.value.split(' ');
+    let splitArray2 = array2.value.split(' ');
+
+    add(splitArray1, splitArray2);
+    document.getElementById("OutputText").innerText = splitArray1;
 }
 
 function symmetricallySubtract()
