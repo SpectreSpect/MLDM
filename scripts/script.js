@@ -46,6 +46,17 @@ function calculate()
      */
 }
 
+
+function find(array, element)
+{
+    for(let i = 0; i < array.length; i++)
+    {
+        if(array[i] == element)
+            return true;
+    }
+    return false;
+}
+
 function removeRepetitions(array2D)
 {
     for(let x = 0; x < array2D.length; x++)
@@ -59,7 +70,17 @@ function removeRepetitions(array2D)
         }
 }
 
-
+function getIntersection(array2D1, array2D2)
+{
+    let resultArray2D = [];
+    for(let x = 0; x < array2D1.length; x++)
+    {
+        if(find(array2D2,array2D1[x]))
+            if(!find(resultArray2D, array2D1[x]))
+                resultArray2D.push(array2D1[x]);
+    }
+    return resultArray2D;
+}
 
 function merge()
 {
@@ -70,6 +91,18 @@ function merge()
     result = result.split(' ');
     removeRepetitions(result);
 
+    document.getElementById("OutputText").innerText = result;
+}
+
+function intersect()
+{
+    let array1 = document.getElementById("Array1");
+    let array2 = document.getElementById("Array2");
+
+    let splitArray1 = array1.value.split(' ');
+    let splitArray2 = array2.value.split(' ');
+
+    let result = getIntersection(splitArray1, splitArray2);
     document.getElementById("OutputText").innerText = result;
 }
 

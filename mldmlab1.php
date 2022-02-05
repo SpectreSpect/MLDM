@@ -23,7 +23,7 @@
 
             <tr>
                 <td><input type = "button" value = "Объеденение" onclick = "merge();"/></td>
-                <td><input type = "button" value = "Пересечение" onclick = "calculate();"/></td>
+                <td><input type = "button" value = "Пересечение" onclick = "intersect();"/></td>
             </tr>
             <tr>
                 <td colspan = "2"><output id = "OutputText""/> Hello  </output></td>
