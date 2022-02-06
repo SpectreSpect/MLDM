@@ -1,6 +1,8 @@
 
 //var array1;
 
+const INPUT_FORMAT = 'bcii';
+
 function isDigit(char)
 {
     if(char >= '0' && char <= '9')
@@ -18,9 +20,6 @@ function isAlpha(char)
 function validate(str, format)
 {
     let isValid = true;
-    //if(str.length > 0)
-    //{
-
         if(str.length == format.length)
         {
             for(let i = 0; i < format.length; i++)
@@ -81,7 +80,6 @@ function validate(str, format)
             }
         }else
             isValid = false;
-    //}
     return isValid;
 }
 
@@ -93,21 +91,30 @@ function validate2D(str2D, format)
     return true;
 }
 
-
-/*
-function isAlpha(array)
+function outputValidationError2D(splitArray1, splitArray2, outputTextFieldID)
 {
-    for(let x = 0; x < array.length; x++)
-        for(let y = 0; y < array[x].length; y++)
-        {
-            if(array[x][y] <= 'a' || array[x][y] >= 'z')
-            {
-                return false;
-            }
-        }
+    let valid1 = validate2D(splitArray1, INPUT_FORMAT);
+    let valid2 = validate2D(splitArray2, INPUT_FORMAT);
+
+    if(!valid1 && !valid2)
+    {
+        //document.getElementById(outputTextFieldID).innerText = "Incorrect format in both arrays, correct format is " + "\"" + INPUT_FORMAT + "\"";
+        document.getElementById(outputTextFieldID).innerText = "Не корректный формат в обоих массивах, корректный формат это " + "\"" + INPUT_FORMAT + "\"";
+        return false;
+    }
+    else if(!valid1)
+    {
+        //document.getElementById(outputTextFieldID).innerText = "Incorrect format in array 1, correct format is " + "\"" + INPUT_FORMAT + "\"";
+        document.getElementById(outputTextFieldID).innerText = "Не корректный формат в обоих массивах, корректный формат это " + "\"" + INPUT_FORMAT + "\"";
+        return false;
+    }else if(!valid2)
+    {
+        //document.getElementById(outputTextFieldID).innerText = "Incorrect format in array 2, correct format is " + "\"" + INPUT_FORMAT + "\"";
+        document.getElementById(outputTextFieldID).innerText = "Не корректный формат в обоих массивах, корректный формат это " + "\"" + INPUT_FORMAT + "\"";
+        return false;
+    }
     return true;
 }
-*/
 
 function find(array, element)
 {
@@ -185,12 +192,20 @@ function merge()
 {
     let array1 = document.getElementById("Array1");
     let array2 = document.getElementById("Array2");
+
+    let splitArray1 = array1.value.split(' ');
+    let splitArray2 = array2.value.split(' ');
+
+    if(!outputValidationError2D(splitArray1, splitArray2, "OutputText"))
+        return;
+
     let result = array1.value + ' ' + array2.value;
 
     result = result.split(' ');
     removeRepetitions(result);
 
-    document.getElementById("OutputText").innerText = result;
+    //document.getElementById("OutputText").innerText = "Result: " + result;
+    document.getElementById("OutputText").innerText = "Результат: " + result;
 }
 
 function intersect()
@@ -201,24 +216,27 @@ function intersect()
     let splitArray1 = array1.value.split(' ');
     let splitArray2 = array2.value.split(' ');
 
-    let result = getIntersection(splitArray1, splitArray2);
+    if(!outputValidationError2D(splitArray1, splitArray2, "OutputText"))
+        return;
 
-    let format = 'bcii';
-    let trust = validate2D(splitArray1, format);
-    //document.getElementById("OutputText").innerText = result;
-    document.getElementById("OutputText").innerText = trust;
+    let result = getIntersection(splitArray1, splitArray2);
+    //document.getElementById("OutputText").innerText = "Result: " + result;
+    document.getElementById("OutputText").innerText = "Результат: " + result;
 }
 
-function addition()
-{
+function addition() {
     let array1 = document.getElementById("Array1");
     let array2 = document.getElementById("Array2");
 
     let splitArray1 = array1.value.split(' ');
     let splitArray2 = array2.value.split(' ');
 
+    if (!outputValidationError2D(splitArray1, splitArray2, "OutputText"))
+        return;
+
     add(splitArray1, splitArray2);
-    document.getElementById("OutputText").innerText = splitArray1;
+    //document.getElementById("OutputText").innerText = "Result: " + splitArray1;
+    document.getElementById("OutputText").innerText = "Результат: " + splitArray1;
 }
 
 function symmetricallySubtract()
@@ -229,8 +247,12 @@ function symmetricallySubtract()
     let splitArray1 = array1.value.split(' ');
     let splitArray2 = array2.value.split(' ');
 
+    if(!outputValidationError2D(splitArray1, splitArray2, "OutputText"))
+        return;
+
     let result = getSymmetricallySubtracted(splitArray1, splitArray2);
-    document.getElementById("OutputText").innerText = result;
+    //document.getElementById("OutputText").innerText = "Result: " + result;
+    document.getElementById("OutputText").innerText = "Результат: " + result;
 }
 
 

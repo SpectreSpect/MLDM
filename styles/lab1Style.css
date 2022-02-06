@@ -1,1 +1,22 @@
 
+.myButton
+{
+    padding: 5px 10px;
+    font-size: 12px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #6695B9;
+    border: none;
+    border-radius: 5px;
+}
+
+.myButton:hover
+{
+    background-color: #49789C
+}
+
+.myButton:active {
+    background-color: #346387;
+}
