@@ -1,15 +1,100 @@
 
 //var array1;
 
-function validate(str)
+function isDigit(char)
 {
-    if(str.length > 0)
-    {
-        return true
-    }else
-        return false
+    if(char >= '0' && char <= '9')
+        return true;
+    return false;
 }
 
+function isAlpha(char)
+{
+    if(((char >= 'a') && (char <= 'z')) || ((char >= 'A') && (char <= 'Z')))
+        return true;
+    return false;
+}
+
+function validate(str, format)
+{
+    let isValid = true;
+    //if(str.length > 0)
+    //{
+
+        if(str.length == format.length)
+        {
+            for(let i = 0; i < format.length; i++)
+            {
+                switch(format[i])
+                {
+                    case 'c':
+                    {
+                        if(!isDigit(str[i]))
+                        {
+                            i = format.length;
+                            isValid = false;
+                        }
+                        break;
+                    }
+                    case 'b':
+                    {
+                        if(!isAlpha(str[i]))
+                        {
+                            i = format.length;
+                            isValid = false;
+                        }
+                        break;
+                    }
+                    case 'i':
+                    {
+                        if(!isDigit(str[i]))
+                        {
+                            i = format.length;
+                            isValid = false;
+                        }else
+                        {
+                            if((str[i] % 2) != 0)
+                            {
+                                i = format.length;
+                                isValid = false;
+                            }
+                        }
+                        break;
+                    }
+                    case 'j':
+                    {
+                        if(!isDigit(str[i]))
+                        {
+                            i = format.length;
+                            isValid = false;
+                        }else
+                        {
+                            if((str[i] % 2) == 0)
+                            {
+                                i = format.length;
+                                isValid = false;
+                            }
+                        }
+                        break;
+                    }
+                }
+            }
+        }else
+            isValid = false;
+    //}
+    return isValid;
+}
+
+function validate2D(str2D, format)
+{
+    for(let i = 0; i < str2D.length; i++)
+        if(!validate(str2D[i], format))
+            return false;
+    return true;
+}
+
+
+/*
 function isAlpha(array)
 {
     for(let x = 0; x < array.length; x++)
@@ -22,30 +107,7 @@ function isAlpha(array)
         }
     return true;
 }
-
-
-
-function calculate()
-{
-    let str = document.getElementById("mass3");
-
-    document.getElementById("OutputText").innerText = "Гыы";
-
-
-    /*
-    let result = true;
-    if(validate(str.value))
-    {
-        let array = str.value.split(' ');
-        if(isAlpha(array))
-            alert("The text entered right! Congratulations!");
-        else
-            alert("The text entered wrong!");
-    }else
-        alert("Array must be filled!");
-     */
-}
-
+*/
 
 function find(array, element)
 {
@@ -140,7 +202,11 @@ function intersect()
     let splitArray2 = array2.value.split(' ');
 
     let result = getIntersection(splitArray1, splitArray2);
-    document.getElementById("OutputText").innerText = result;
+
+    let format = 'bcii';
+    let trust = validate2D(splitArray1, format);
+    //document.getElementById("OutputText").innerText = result;
+    document.getElementById("OutputText").innerText = trust;
 }
 
 function addition()
