@@ -1,6 +1,3 @@
-
-//var array1;
-
 const INPUT_FORMAT = 'bcii';
 
 function isDigit(char)
@@ -224,7 +221,8 @@ function intersect()
     document.getElementById("OutputText").innerText = "Результат: " + result;
 }
 
-function addition() {
+function addition1to2()
+{
     let array1 = document.getElementById("Array1");
     let array2 = document.getElementById("Array2");
 
@@ -237,6 +235,22 @@ function addition() {
     add(splitArray1, splitArray2);
     //document.getElementById("OutputText").innerText = "Result: " + splitArray1;
     document.getElementById("OutputText").innerText = "Результат: " + splitArray1;
+}
+
+function addition2to1()
+{
+    let array1 = document.getElementById("Array1");
+    let array2 = document.getElementById("Array2");
+
+    let splitArray1 = array1.value.split(' ');
+    let splitArray2 = array2.value.split(' ');
+
+    if (!outputValidationError2D(splitArray1, splitArray2, "OutputText"))
+        return;
+
+    add(splitArray2, splitArray1);
+    //document.getElementById("OutputText").innerText = "Result: " + splitArray1;
+    document.getElementById("OutputText").innerText = "Результат: " + splitArray2;
 }
 
 function symmetricallySubtract()

@@ -24,11 +24,13 @@
             <tr>
                 <td><input class = "myButton" type = "button" value = "Объеденение" onclick = "merge();"/></td>
                 <td><input class = "myButton" type = "button" value = "Пересечение" onclick = "intersect();"/></td>
-
             </tr>
             <tr>
-                <td><input class = "myButton" type = "button" value = "Дополнение" onclick = "addition();"/></td>
+                <td><input class = "myButton" type = "button" value = "Дополнение 1 до 2" onclick = "addition1to2();"/></td>
                 <td><input class = "myButton" type = "button" value = "Симметричная разность" onclick = "symmetricallySubtract();"/></td>
+            </tr>
+            <tr>
+                <td colspan = "2"><input class = "myButton" type = "button" value = "Дополнение 2 до 1" onclick = "addition2to1();"/></td>
             </tr>
             <tr>
                 <td colspan = "2"><output id = "OutputText"/></output></td>
