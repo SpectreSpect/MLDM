@@ -1,4 +1,4 @@
-const INPUT_FORMAT = 'bcii';
+const INPUT_FORMAT = 'ijji';
 
 function isDigit(char)
 {
